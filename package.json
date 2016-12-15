@@ -10,7 +10,7 @@
     "colors": "^1.1.2",
     "minimist": "^1.2.0",
     "phantomjs-pool": "^0.3.1",
-    "phantomjs-prebuilt": "^2.1.7"
+    "phantomjs": "^2.1.7"
   },
   "author": "",
   "license": "ISC"

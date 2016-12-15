@@ -3,9 +3,13 @@
 
 *A multiworker PhantomJS webpage screenshot CLI tool*
 
-##Philosopy
+##Philosophy
 Simplicity is the core philosophical principle of clasp.js. It has limited dependencies and cli switches, and is intended to be immiediately operable without reading tomes of documentation. It is also written to be as fast as possible, without needless overcomplication and still retaining reasonable functionality.
 
+###Installation
+Clone the repository, then ```cd clasp && npm install```
+
+Tested on Debian 8.
 ###Usage
 Usage: ```clasp.js [-f FILE] [-t threads] HOSTNAME```
 
