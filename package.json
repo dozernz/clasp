@@ -1,0 +1,17 @@
+{
+  "name": "clasp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "clasp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "colors": "^1.1.2",
+    "minimist": "^1.2.0",
+    "phantomjs-pool": "^0.3.1",
+    "phantomjs-prebuilt": "^2.1.7"
+  },
+  "author": "",
+  "license": "ISC"
+}
