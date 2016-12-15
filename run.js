@@ -29,8 +29,17 @@ exports.getHosts = function(){
       var hostsAr = [];
       filename = parseArgs.f;
       var array = require('fs').readFileSync(filename).toString().split("\n");
-      array = array.filter(function(n){ return n != "" });
-      return array;
+      array = array.filter(function(n){
+        if(n!=""){
+          if(n.match(/http[s]?\:\/\//)){
+            hostsAr.push(n);
+          }else{
+            hostsAr.push("http://"+n);
+            hostsAr.push("https://"+n);
+          }
+        }
+      });
+      return hostsAr;
     }
     catch(err){
       console.log("Failed to read file or something")
