@@ -9,8 +9,9 @@
   "dependencies": {
     "colors": "^1.1.2",
     "minimist": "^1.2.0",
-    "phantomjs-pool": "^0.3.1",
-    "phantomjs": "^2.1.7"
+    "netmask": "^1.0.6",
+    "phantomjs": "^2.1.7",
+    "phantomjs-pool": "^0.3.1"
   },
   "author": "",
   "license": "ISC"

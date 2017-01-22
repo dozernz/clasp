@@ -1,5 +1,16 @@
 var parseArgs = require('minimist')(process.argv.slice(2))
 
+function parseNetmask(block){
+  var ipblock = [];
+  block.forEach(function(ip, long, index){
+    ipblock.push("http://"+ip);
+    ipblock.push("https://"+ip);
+  });
+  console.log(ipblock);
+  return ipblock
+}
+
+
 exports.getOpts = function(){
   opts = {};
   if(parseInt(parseArgs.t) >= 0){
@@ -49,7 +60,16 @@ exports.getHosts = function(){
 
   else if(parseArgs._.length > 0){
     var singlehost = parseArgs._[0];
-    console.log("Screenshotting single host: "+singlehost);
+
+    try{
+      var Netmask = require('netmask').Netmask
+      var block = new Netmask(singlehost);
+      return parseNetmask(block);
+    } catch(err){
+    //Not a ip range
+      console.log("Screenshotting single host: "+singlehost);
+    }
+
     if(singlehost.indexOf("://") == -1){
       //This is a host without http or https
       var singleHostWithProtocol = [];
