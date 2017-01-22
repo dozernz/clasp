@@ -48,8 +48,17 @@ exports.getHosts = function(){
   }
 
   else if(parseArgs._.length > 0){
-
-    console.log("Screenshotting single host: "+parseArgs._[0]);
-    return [parseArgs._[0]];
+    var singlehost = parseArgs._[0];
+    console.log("Screenshotting single host: "+singlehost);
+    if(singlehost.indexOf("://") == -1){
+      //This is a host without http or https
+      var singleHostWithProtocol = [];
+      singleHostWithProtocol.push("http://"+singlehost)
+      singleHostWithProtocol.push("https://"+singlehost)
+      return singleHostWithProtocol;
+    }
+    else{
+      return [singlehost];
+    }
   }
 };
