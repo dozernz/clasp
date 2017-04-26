@@ -15,7 +15,7 @@
   },
   "bin": {
     "clasp": "clasp.js"
-  }
+  },
   "author": "",
   "license": "ISC"
 }
