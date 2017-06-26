@@ -21,7 +21,11 @@ module.exports = function(data, done, worker) {
     page.open(data);
     page.onLoadFinished = function(status) {
       if(status == "success"){
-        var fname = "output/"+data.split(/:\/\//)[1]+"-"+(new Date).getTime() + '.png';
+        var proto = data.split(/:\/\//)[0];
+        var filename = data.split(/:\/\//)[1].replace(/[^A-Za-z0-9\.]/g,"-");
+        //console.log(filename.replace(/\//g,"-"));
+        //console.log(filename);
+        var fname = "output/"+proto+"-"+filename+"-"+(new Date).getTime() + '.png';
         page.render(fname);
         done(null,{"url":data});
       }

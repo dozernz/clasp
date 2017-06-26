@@ -6,7 +6,6 @@ function parseNetmask(block){
     ipblock.push("http://"+ip);
     ipblock.push("https://"+ip);
   });
-  console.log(ipblock);
   return ipblock
 }
 
@@ -45,8 +44,26 @@ exports.getHosts = function(){
           if(n.match(/http[s]?\:\/\//)){
             hostsAr.push(n);
           }else{
-            hostsAr.push("http://"+n);
-            hostsAr.push("https://"+n);
+              if(n.match(/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\/[0-9]{1,2}$/)){
+                //Looks like a subnet
+                try{
+                  var Netmask = require('netmask').Netmask
+                  var block = new Netmask(n);
+                  var block_ar = parseNetmask(block);
+                  block_ar.forEach(function (b){
+                    hostsAr.push(b);
+                  });
+                }
+                  catch(err){
+                  //Not a ip range
+                    console.log("Failed to parse netmask "+n);
+                  }
+                }
+
+              else{
+                hostsAr.push("http://"+n);
+                hostsAr.push("https://"+n);
+          }
           }
         }
       });
